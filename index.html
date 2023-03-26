@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="counter-container"></div>
+</body>
+
+<script>
+    const input = "218634";
+
+    for (let i = 0; i < input.length; i++) {
+        createColumn(i);
+        animateColumn(i, +input[i]);
+    }
+
+    
+
+    function animateColumn(columnId, number) {
+        const column = document.querySelector(`#col-${columnId}`);
+        const initialNumber = Math.floor(Math.random() * 10);
+        const test = 10 - initialNumber;
+
+        column.style.transition = `transform ${(10-initialNumber)*100}ms linear`;
+        column.style.transform = `translateY(${-initialNumber*100}px)`;
+        
+        setTimeout(() => {column.style.transition = `transform 1000ms linear`; column.style.transform = `translateY(${-900}px)`}, test * 100);
+        setTimeout(() => {column.style.transform = `translateY(${-number*100}px)`}, test * 100 + 1000);
+    }
+
+    function createColumn(columnId) {
+        const counterContainer = document.querySelector(".counter-container");
+
+        const columnContainer = document.createElement("div");
+        columnContainer.classList.add("column-container");
+
+        const column = document.createElement("div");
+        column.setAttribute("id",`col-${columnId}`);
+
+        for (let i = 0; i < 10; i++) {
+            const number = document.createElement("span");
+            number.classList.add("number");
+            number.innerHTML = i;
+            column.appendChild(number);
+        }
+        columnContainer.appendChild(column);
+        counterContainer.appendChild(columnContainer);
+    }
+</script>
+</html>

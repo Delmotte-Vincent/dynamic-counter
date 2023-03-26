@@ -1,0 +1,33 @@
+html {
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFEA00;
+    height: 100vh;
+}
+
+.counter-container {
+    height: 100px;
+    gap: 20px;
+    overflow: hidden;
+    display: flex;
+    width: fit-content;
+}
+
+.column-container {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+}
+
+.number {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 900;
+    color: white;
+}
