@@ -18,18 +18,22 @@
         animateColumn(i, +input[i]);
     }
 
-    
-
     function animateColumn(columnId, number) {
         const column = document.querySelector(`#col-${columnId}`);
         const initialNumber = Math.floor(Math.random() * 10);
-        const test = 10 - initialNumber;
+        const delta = 10 - initialNumber;
 
-        column.style.transition = `transform ${(10-initialNumber)*100}ms linear`;
-        column.style.transform = `translateY(${-initialNumber*100}px)`;
+        column.style.transition = `transform ${delta * 100}ms linear`;
+        column.style.transform = `translateY(${-initialNumber * 100}px)`;
         
-        setTimeout(() => {column.style.transition = `transform 1000ms linear`; column.style.transform = `translateY(${-900}px)`}, test * 100);
-        setTimeout(() => {column.style.transform = `translateY(${-number*100}px)`}, test * 100 + 1000);
+        setTimeout(() => {
+            column.style.transition = `transform 1000ms linear`; 
+            column.style.transform = `translateY(${-900}px)`
+        }, delta * 100);
+
+        setTimeout(() => {
+            column.style.transform = `translateY(${-number * 100}px)`
+        }, delta * 100 + 1000);
     }
 
     function createColumn(columnId) {
